@@ -1,0 +1,23 @@
+{
+  "name": "ZerAngAssignment",
+  "version": "0.0.0",
+  "description": "Assignment given to Zerion applicants",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bobdaball/ZerAngAssignment.git"
+  },
+  "author": {
+    "name": "Alexander Mire",
+    "email": "amire51117@gmail.com",
+  },
+  "bugs": {
+  },
+  "dependencies": {
+    "angular-animate": "1.3.14",
+  },
+  "devDependencies": {
+  }
+}
