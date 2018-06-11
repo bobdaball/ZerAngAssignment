@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" ng-app="zerAng" ng-init="person = {fName: 'Derek', lName: 'Banas'}">
 	<body>
 
-		<div ng-app="">
+		<div ng-controller="zerAng">
 		  <p>Name : <input type="text" ng-model="name"></p>
 		  <h1>Hello {{name}}</h1>
+
+		  <span>Values:</span>
+		  <input type="text" ng-model="first" />
+		  <input type="text" ng-model="second" />
+
+		  <button ng-click="updateValue()">Sum</button>
+		  <br><br>
+		  {{calculation}}
+
+		  <p>Your first value is {{first}}</p>
+		  <p>Your second value is {{second}}</p>
+		 <br><br>
+	
+			<button ng-click="returnData()">tileData</button>
+		 {{results}}
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="js/zerAng.js"></script>
 	</body>
 </html> 
