@@ -10,6 +10,7 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.picDesc = "";
 	$scope.picURL = "";
 	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
+	
 	const tilesReq = {
    method: 'GET',
    url:"https://alpha-dataflownode.zerionsoftware.com/code_assignment/records",
@@ -90,3 +91,4 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 // upon making the post request, a get request is executed to get the new data.
 //
 // DELETE... all images would be assigned an array value, and upon clicking, the array value deletion is requested, followed by get request
+

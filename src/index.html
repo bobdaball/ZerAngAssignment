@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="zerAng" ng-init="person = {fName: 'Derek', lName: 'Banas'}">
+	<head>
+		<title>Zerion Angular Assignment</title>
+		<link href="css/zerAng.css" rel="stylesheet">
+	</head>
 	<body>
 
 		<div ng-controller="zerAng">
@@ -31,6 +35,23 @@
 		 <br>
 		 <button ng-click="returnData()">tileData</button>
 		 {{results}}
+
+		<!-- <div class="inset" ng-controller="docTableSwitch" ng-cloak>
+		 	<md-switch ng-model="">
+		 	</md-switch>/
+		 </div>-->
+		 <div>
+			 <ul>
+			 	<li ng-repeat="x in results">
+			 		<figure>
+			 			<img src={{x.imgs[0].url}} alt={{x.name}} />
+			 			<figcaption>{{x.description}}</figcaption>
+			 		</figure>
+			 	</li>
+			 </ul>
+			 <br><br>
+		</div> 
+
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<script src="js/zerAng.js"></script>
