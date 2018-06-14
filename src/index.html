@@ -46,6 +46,8 @@
 			 		<figure>
 			 			<img src={{x.imgs[0].url}} alt={{x.name}} />
 			 			<figcaption>{{x.description}}</figcaption>
+			 			<br><br>
+						<button ng-click="deleteData(x._id)"> delete </button>
 			 		</figure>
 			 	</li>
 			 </ul>

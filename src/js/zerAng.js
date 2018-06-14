@@ -9,6 +9,7 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.picName = "";
 	$scope.picDesc = "";
 	$scope.picURL = "";
+
 	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
 	
 	const tilesReq = {
@@ -37,6 +38,15 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
               }
            ]
         }
+	};
+
+	const deleteArg = {
+   method: 'DELETE',
+   url:"https://alpha-dataflownode.zerionsoftware.com/code_assignment/records/",
+   headers: 
+         { 
+           "Authorization": "Bearer " + $scope.accessToken
+         }
 	};    
 
 	$scope.updateValue = () => {
@@ -73,10 +83,26 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
         };
 
 		console.log(addTile.body, "data body");
+
 		$http(addTile).then((data, err) => {
 			if (err) {
 				return "error: " + err;
 				console.log("error: " + err);	
+			} else {
+				$scope.returnData();
+				console.log("data added!")
+			}
+		})
+	}
+
+	$scope.deleteData = (id) => {
+		deleteArg.url = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records/" + id;
+		console.log(id, "id");
+
+		$http(deleteArg).then((data, err) => {
+			if (err) {
+				return "error: " + err;
+				console.log("error: " + err);
 			} else {
 				$scope.returnData();
 				console.log("data added!")
