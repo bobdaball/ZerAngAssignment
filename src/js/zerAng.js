@@ -9,12 +9,17 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.picName = "";
 	$scope.picDesc = "";
 	$scope.picURL = "";
+	$scope.updateName = "";
+	$scope.updateDesc = "";
+	$scope.updateURL = "";
+
+	const defaultURL = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records";
 
 	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
 	
 	const tilesReq = {
    method: 'GET',
-   url:"https://alpha-dataflownode.zerionsoftware.com/code_assignment/records",
+   url: defaultURL,
    headers: 
          { 
            "Authorization": "Bearer " + $scope.accessToken
@@ -23,7 +28,7 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 
 	const addTile = {
    method: 'POST',
-   url:"https://alpha-dataflownode.zerionsoftware.com/code_assignment/records",
+   url: defaultURL,
    headers: 
          { 
            "Authorization": "Bearer " + $scope.accessToken,
@@ -42,12 +47,32 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 
 	const deleteArg = {
    method: 'DELETE',
-   url:"https://alpha-dataflownode.zerionsoftware.com/code_assignment/records/",
+   url: defaultURL,
    headers: 
          { 
            "Authorization": "Bearer " + $scope.accessToken
          }
 	};    
+
+	const updateArg = {
+   method: 'PUT',
+   url: defaultURL,
+   headers: 
+         { 
+           "Authorization": "Bearer {{accessToken}}",
+           "content-type": "application/json"
+         },
+   body: { 
+           "name": $scope.updateName, 
+           "description": $scope.updateDesc, 
+           "imgs":[
+               {
+                "url": $scope.updateURL
+              }
+           ],
+         }
+	}
+
 
 	$scope.updateValue = () => {
 		$scope.calculation = $scope.first + ' + ' + $scope.second
@@ -96,16 +121,34 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	}
 
 	$scope.deleteData = (id) => {
-		deleteArg.url = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records/" + id;
+		deleteArg.url = defaultURL + "/" + id;
 		console.log(id, "id");
 
 		$http(deleteArg).then((data, err) => {
 			if (err) {
 				return "error: " + err;
 				console.log("error: " + err);
+				deleteArg.url = defaultURL;
 			} else {
 				$scope.returnData();
-				console.log("data added!")
+				console.log("data deleted!");
+				deleteArg.url = defaultURL;
+			}
+		})
+	}
+
+	$scope.updateArg = (id) => {
+		updateArg.url = defaultURL + "/" + id;
+		
+		$http(updateArg).then((data, err) => {
+			if (err) {
+				return "error: " + err;
+				console.log("error: " + err);
+				updateArg.url = defaultURL;
+			} else {
+				$scope.returnData();
+				console.log('data updated');
+				updateArg.url = defaultURL;
 			}
 		})
 	}
