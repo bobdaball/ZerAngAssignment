@@ -13,16 +13,12 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.updateDesc = "";
 	$scope.updateURL = "";
 	$scope.updateVisibility = false;
-
-
-	$scope.$watch('updateVisibility', () => {
-		$scope.buttonvalue = $scope.updateVisibility ? "hide the Div" : "Show the Div";
-	})
+	$scope.tableView = false;
+	$scope.tileView = true;
+	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
 
 	const defaultURL = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records";
 
-	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
-	
 	const tilesReq = {
    method: 'GET',
    url: defaultURL,
@@ -79,6 +75,10 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
          }
 	}
 
+
+	$scope.$watch('updateVisibility', () => {
+		$scope.buttonvalue = $scope.updateVisibility ? "hide the Div" : "Show the Div";
+	})
 
 	$scope.updateValue = () => {
 		$scope.calculation = $scope.first + ' + ' + $scope.second

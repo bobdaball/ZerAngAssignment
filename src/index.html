@@ -26,11 +26,7 @@
 		 	{{results}}
 		</div>
 		
- 
-		<!-- <div class="inset" ng-controller="docTableSwitch" ng-cloak>
-		 	<md-switch ng-model="">
-		 	</md-switch>/
-		 </div>-->
+
 
 		<div>
 			<input type="button" value={{buttonvalue}} ng-click="updateVisibility = !updateVisibility"/>
@@ -51,18 +47,23 @@
 		</div>
 
 		<div>
-			<ul>
-			 	<li ng-repeat="x in results">
-			 		<figure>
-			 			<img src={{x.imgs[0].url}} alt={{x.name}} />
-			 			<figcaption>{{x.description}}</figcaption>
-			 			<br><br>
-						<button ng-click="deleteData(x._id)"> delete </button>
-			 		</figure>
-			 	</li>
-			 </ul>
+			<input type="button" value="Tile View" ng-click="tileView = !tileView" />
+			<div ng-show="tileView">
+				<ul>
+				 	<li ng-repeat="x in results">
+				 		<figure>
+				 			<img src={{x.imgs[0].url}} alt={{x.name}} />
+				 			<figcaption>{{x.description}}</figcaption>
+				 			<br><br>
+							<button ng-click="deleteData(x._id)"> delete </button>
+				 		</figure>
+				 	</li>
+				 </ul>
+			</div>
 			 <br><br>
 		</div>
+
+
 
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
