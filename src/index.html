@@ -10,38 +10,48 @@
 		  <p>Name : <input type="text" ng-model="name"></p>
 		  <h1>Hello {{name}}</h1>
 
-		  <span>Values:</span>
-		  <input type="text" ng-model="first" />
-		  <input type="text" ng-model="second" />
-
-		  <button ng-click="updateValue()">Sum</button>
-		  <br><br>
-		  {{calculation}}
-
-		  <p>Your first value is {{first}}</p>
-		  <p>Your second value is {{second}}</p>
-		 <br><br>
-	
-		 <p>pic name</p>
-		 <input type="text" ng-model="picName" />
-		 <br>
-		 <p>pic description</p>
-		 <input type="text" ng-model="picDesc" />
-		 <br>
-		 <p>pic URL</p>
-		 <input type="text" ng-model="picURL" />
-		 <br>
-		 <button ng-click="addData()">addtoTile</button>
-		 <br>
-		 <button ng-click="returnData()">tileData</button>
-		 {{results}}
-
+		<div>
+			<p>pic name</p>
+			<input type="text" ng-model="picName" />
+		 	<br>
+		 	<p>pic description</p>
+		 	<input type="text" ng-model="picDesc" />
+		 	<br>
+		 	<p>pic URL</p>
+		 	<input type="text" ng-model="picURL" />
+		 	<br>
+		 	<button ng-click="addData()">addtoTile</button>
+		 	<br>
+		 	<button ng-click="returnData()">tileData</button>
+		 	{{results}}
+		</div>
+		
+ 
 		<!-- <div class="inset" ng-controller="docTableSwitch" ng-cloak>
 		 	<md-switch ng-model="">
 		 	</md-switch>/
 		 </div>-->
-		 <div>
-			 <ul>
+
+		<div>
+			<input type="button" value={{buttonvalue}} ng-click="updateVisibility = !updateVisibility"/>
+			<div ng-show="updateVisibility"> 
+
+			<p>updated name</p>
+			<input type="text" ng-model="updateName" />
+		 	<br>
+		 	<p>pic description</p>
+		 	<input type="text" ng-model="updateDesc" />
+		 	<br>
+		 	<p>pic URL</p>
+		 	<input type="text" ng-model="updateURL" />
+		 	<br>
+		 	<button ng-click="addData()">addtoTile</button>
+
+			</div>
+		</div>
+
+		<div>
+			<ul>
 			 	<li ng-repeat="x in results">
 			 		<figure>
 			 			<img src={{x.imgs[0].url}} alt={{x.name}} />
@@ -52,7 +62,7 @@
 			 	</li>
 			 </ul>
 			 <br><br>
-		</div> 
+		</div>
 
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

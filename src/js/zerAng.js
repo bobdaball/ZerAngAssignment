@@ -12,6 +12,12 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.updateName = "";
 	$scope.updateDesc = "";
 	$scope.updateURL = "";
+	$scope.updateVisibility = false;
+
+
+	$scope.$watch('updateVisibility', () => {
+		$scope.buttonvalue = $scope.updateVisibility ? "hide the Div" : "Show the Div";
+	})
 
 	const defaultURL = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records";
 
@@ -152,6 +158,8 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 			}
 		})
 	}
+
+
 });
 
 // CREATE INPUT FOR IMG URL, NAME, AND DESCRIPTION.
