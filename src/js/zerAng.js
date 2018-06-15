@@ -61,7 +61,7 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
    url: defaultURL,
    headers: 
          { 
-           "Authorization": "Bearer {{accessToken}}",
+           "Authorization": "Bearer " + $scope.accessToken,
            "content-type": "application/json"
          },
    body: { 
@@ -75,6 +75,14 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
          }
 	}
 
+	const getItem = {
+   method: 'GET',
+   url: defaultURL,
+   headers: 
+         { 
+           "Authorization": "Bearer " + $scope.accessToken
+         }
+	}
 
 	$scope.$watch('updateVisibility', () => {
 		$scope.buttonvalue = $scope.updateVisibility ? "hide the Div" : "Show the Div";
@@ -160,8 +168,32 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	}
 
 
+	$scope.toggleDetailView = () => {
+		$scope.updateVisibility = !$scope.updateVisibility
+	}
 });
 
+/*
+
+	$scope.singleGrab = () => {
+	
+		$http(getItem).then((data, err) => {
+			if (err) {
+				return "error: " + err;
+				console.log("error: " + err);
+			} else {
+				data.data.name
+				data.data.description
+				data.img[0].url
+
+				//have above info auto-populate input field, so that people can change
+				// once clicked on update, a person 
+			}
+		})
+
+	}
+	
+*/
 // CREATE INPUT FOR IMG URL, NAME, AND DESCRIPTION.
 // MAKE SURE EVERYTHING IS MANDATORY EXCEPT FOR DESCRIPTION
 // BUTTON EXECUTES THE POST REQUEST
