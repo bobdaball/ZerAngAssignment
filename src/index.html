@@ -31,7 +31,7 @@
 			<div ng-show="tileView">
 				<ul>
 				 	<li ng-repeat="x in results">
-				 		<figure ng-click="toggleDetailView()">
+				 		<figure ng-click="toggleDetailView(x._id)">
 				 			<img src={{x.imgs[0].url}} alt={{x.name}} />
 				 			<figcaption>{{x.description}}</figcaption>
 				 		</figure>
@@ -41,23 +41,23 @@
 			 <br><br>
 		</div>
 
-		<div>
+		<div ng-show="!tileView">
 
-		<table>
-			<tr>
-				<th></th>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Image URLs</th>
-			</tr>
+			<table>
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Image URLs</th>
+				</tr>
 
-			<tr ng-repeat= "y in results">
-				<td><button ng-click="deleteData(y._id)"> delete </button></td>
-				<td>{{y.name}}</td>
-				<td>{{y.description}}</td>
-				<td>{{y.imgs[0].url}}</td>
-			</tr>
-		</table>
+				<tr ng-repeat= "y in results">
+					<td><button ng-click="deleteData(y._id)"> delete </button></td>
+					<td>{{y.name}}</td>
+					<td>{{y.description}}</td>
+					<td>{{y.imgs[0].url}}</td>
+				</tr>
+			</table>
 		</div>	
 		</div>
 		<div>
@@ -72,8 +72,8 @@
 		 	<p>pic URL</p>
 		 	<input type="text" ng-model="updateURL" />
 		 	<br>
-		 	<button ng-click="addData()">addtoTile</button>
-
+		 	<button ng-click="addData()">UpdateTile</button>
+		 	<button ng-click="updateVisibility = !updateVisibility">Cancel</button>
 			</div>
 		</div>
 <!-- <table>

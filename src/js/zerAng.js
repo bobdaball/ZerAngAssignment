@@ -15,6 +15,8 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.updateVisibility = false;
 	$scope.tableView = false;
 	$scope.tileView = true;
+	$scope.newDocView = false;
+	
 	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
 
 	const defaultURL = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records";
@@ -168,8 +170,16 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	}
 
 
-	$scope.toggleDetailView = () => {
-		$scope.updateVisibility = !$scope.updateVisibility
+	$scope.toggleDetailView = (idNum) => {
+
+		const element = $scope.results.find((x) => {
+			return x._id = idNum
+		});
+
+		$scope.updateName = element["name"];
+		$scope.updateDesc = element.description;
+		$scope.updateURL = element.imgs[0].url;
+		$scope.updateVisibility = !$scope.updateVisibility;
 	}
 });
 
