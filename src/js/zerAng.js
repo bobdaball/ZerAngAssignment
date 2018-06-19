@@ -13,13 +13,15 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 	$scope.updateDesc = "";
 	$scope.updateURL = "";
 	$scope.updateVisibility = false;
+	$scope.updateID = "";
 	$scope.tableView = false;
 	$scope.tileView = true;
 	$scope.newDocView = false;
-	
+
 	$scope.accessToken = "ba2b81b86d21befe556ac4a55583f168d577e2ce-e5f33805ca96b3aa7c3285fc9c498ae2bcb035e2";
 
 	const defaultURL = "https://alpha-dataflownode.zerionsoftware.com/code_assignment/records";
+
 
 	const tilesReq = {
    method: 'GET',
@@ -107,6 +109,10 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 		})
 	};
 
+	$scope.init = () => {
+		$scope.returnData();
+	}
+
 	$scope.addData = () => {
 		console.log($scope.picName, "$scope.picName");
 		console.log($scope.picDesc, "$scope.picDesc");
@@ -153,9 +159,27 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 		})
 	}
 
-	$scope.updateArg = (id) => {
+	$scope.updateTile= (id) => {
 		updateArg.url = defaultURL + "/" + id;
-		
+		console.log(id, 'id');
+		// updateArg.body.name = $scope.updateName;
+		// updateArg.body.description = $scope.updateDesc;
+		// updateArg.body.imgs[0].url = $scope.updateURL;
+
+	  updateArg.data = { 
+      name: $scope.updateName, 
+      description: $scope.updateDesc, 
+      imgs:[
+        {
+          url: $scope.updateURL
+        }
+      ],
+    };
+
+
+
+		console.log(updateArg, "updateArg");
+
 		$http(updateArg).then((data, err) => {
 			if (err) {
 				return "error: " + err;
@@ -172,13 +196,16 @@ zerAng.controller('zerAng', ($scope, $location, $http) => {
 
 	$scope.toggleDetailView = (idNum) => {
 
-		const element = $scope.results.find((x) => {
-			return x._id = idNum
+		let element = $scope.results.find((x) => {
+			return x._id === idNum
 		});
 
+		console.log(element, 'element');
+		console.log(idNum, 'idNum');
 		$scope.updateName = element["name"];
 		$scope.updateDesc = element.description;
 		$scope.updateURL = element.imgs[0].url;
+		$scope.updateID = idNum;
 		$scope.updateVisibility = !$scope.updateVisibility;
 	}
 });
